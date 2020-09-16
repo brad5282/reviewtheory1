@@ -1,21 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package part2;
 
-/**
- *
- * @author brad5282
- */
+import java.text.NumberFormat;
+
+
 public class PopulationGrowth {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        /*
+        Barrie's pop in 202 is 160000
+        grows by 6% every 10 years
+        how much will it be by 2120?
+        */
+        int pop = 160000;
+        int growth;
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        
+        //print column headings 
+        System.out.format("%5s", "YEAR");
+        System.out.format("%20s", "POPULATION");
+        System.out.format("%15s", "GROWTH");
+        System.out.format("%20s\n", "NEW POPULATION");
+        
+        System.out.format("%5s", "======");
+        System.out.format("%20s", "============");
+        System.out.format("%15s", "========");
+        System.out.format("%20s\n", "================");
+        
+        for (int year = 2020; year <= 2120; year+=10) {
+            System.out.format("%5d", year);
+            System.out.format("%20s",nf.format(pop));
+            growth = (int)(.06*pop);//have to cast to intger
+            System.out.format("%15s",nf.format(growth));
+            pop += growth;
+            System.out.format("%20s\n",nf.format(pop));
+            
+        }
     }
     
 }

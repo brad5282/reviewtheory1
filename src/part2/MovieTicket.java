@@ -1,21 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package part2;
 
-/**
- *
- * @author brad5282
- */
+import java.util.Scanner;
+
+
 public class MovieTicket {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner s = new Scanner(System.in);
+        int age;
+        String day;
+        double price;
+        
+        //force user to enter M, T or O
+        while(true){
+            System.out.println("Enter day code: \"m\"-matinee, \"t\"-Tuesday, \"o\"- Other: ");
+            day = s.next().toLowerCase();
+            if(day.equals("o") || day.equals("m") || day.equals("t")) break;
+            System.out.println("Error, must be O, T, or M. Try Again \n");
+        }
+        System.out.println("Thanks for now");
+        if(day.equals("m")) price = 5;//matinee is $5
+        else if(day.equals("t")) price = 4;//Tues is $4
+        else{
+            //must be o
+            do{
+                System.out.println("Enter age from 1-99: ");
+                age=s.nextInt();
+            }while(age < 1 || age > 99);
+            price = age < 18? 8 : 10;
+        }
+        System.out.println("Price is $" + price);
     }
     
 }
